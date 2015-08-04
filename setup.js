@@ -9,7 +9,7 @@ var stdio = require('stdio'),
                 'debug',
                 'removeOriginals',
                 'concurrency',
-                'path'
+                'store.path'
             ]
         },
         s3: {
@@ -18,11 +18,11 @@ var stdio = require('stdio'),
                 'debug',
                 'removeOriginals',
                 'concurrency',
-                'bucket',
-                'region',
-                'accessKeyId',
-                'secretAccessKey',
-                'path'
+                'store.bucket',
+                'store.region',
+                'store.accessKeyId',
+                'store.secretAccessKey',
+                'store.path'
             ]
         },
         scp: {
@@ -31,10 +31,10 @@ var stdio = require('stdio'),
                 'debug',
                 'removeOriginals',
                 'concurrency',
-                'host',
-                'username',
-                'password',
-                'path'
+                'store.host',
+                'store.username',
+                'store.password',
+                'store.path'
             ]
         }
     },
@@ -55,7 +55,14 @@ function askQuestions() {
     }
 
     stdio.question(question, function (err, answer) {
-        answers[field] = question.indexOf('(y/n)') !== -1 ? /y|yes/.test(answer) : answer;
+        answer = question.indexOf('(y/n)') !== -1 ? /y|yes/.test(answer) : answer;
+
+        if (field.indexOf('store.') !== -1) {
+            answers.store[field.replace('store.', '')] = answer;
+        } else {
+            answers[field] = answer;
+        }
+
         delete questions[field];
         askQuestions();
     });
@@ -70,7 +77,9 @@ stdio.question('How would you like to store your files (' + Object.keys(stores).
         return;
     }
 
-    answers.type = key;
+    answers.store = {
+        type: key
+    };
 
     for (var i = 0; i < store.required.length; i++) {
         field = store.required[i];
