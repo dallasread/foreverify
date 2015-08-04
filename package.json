@@ -1,0 +1,30 @@
+{
+  "name": "foreverify",
+  "version": "1.0.0",
+  "description": "A Black Hole On Your Computer That Saves Files Forever",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dallasread/foreverify.git"
+  },
+  "author": "Dallas Read",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dallasread/foreverify/issues"
+  },
+  "homepage": "https://github.com/dallasread/foreverify#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1.42",
+    "fs": "0.0.2",
+    "generate-js": "^2.1.1",
+    "mkdirp": "^0.5.1",
+    "path": "^0.11.14",
+    "recursive-readdir": "^1.2.1",
+    "scp2": "^0.2.2",
+    "stdio": "^0.2.7",
+    "watch": "^0.16.0"
+  }
+}

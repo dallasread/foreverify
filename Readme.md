@@ -1,19 +1,21 @@
-### Expectations
+### Goals
+- Doesn't delete files when changed, only adds
 - Fully encrypted data over the wire
-- Doesn't delete, only adds
 - Shareable private galleries
-- Indexed
-- Open: plug in your own server
+- Runs in the background with no extra work from user
+- Open: plug in your own data source & data store
 
 ### To Run
 - `npm i`
-- `cp config.example.js config.js`
-- `node watch.js`
-- drop files in `./tmp/`
-- should appear in `./storage/`
+- `node setup`
+- `node .`
+- Your files should now sync!
+
+### Running Forever
+- If you want to continually listen for new files, `npm i -g forever`
+- `forever start /path/to/foreverify`
 
 ### Todo
-- Add S3 Store
 - Add Indexers
 - Add Web Interface
 
